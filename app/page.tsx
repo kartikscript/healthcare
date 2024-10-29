@@ -5,7 +5,7 @@ import Image from "next/image";
 export default function Home() {
   return (<>
   <header className="bg-gray-950 text-white/90 flex h-screen max-h-screen">
-    <div className="container my-auto px-40">
+    <div className="w-1/2 my-auto px-32">
         <h2 className="flex items-center gap-4 text-xl font-semibold pb-8"><Hospital/> HealthCare</h2>
         <h1 className="text-2xl font-medium ">Hi There !</h1>
         <p className="text-sm text-white/60 pt-2 pb-6">Schedule your first appointment</p>
@@ -15,14 +15,13 @@ export default function Home() {
           <p>Admin</p>
         </div>
     </div>
-    <div className="relative size-full opacity-80">
       <Image
-        className="bg-containcenter"
+        className="w-1/2 bg-cover "
         src={'/images/main.jpg'}
         alt="healthcare"
-        fill
+        width={1000}
+        height={1000}
       />
-    </div>
   </header>
   </>
   );
