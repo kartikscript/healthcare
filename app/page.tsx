@@ -17,7 +17,7 @@ export default function Home() {
     </div>
       <Image
         className="w-1/2 bg-cover "
-        src={'/images/main.jpg'}
+        src={'/images/onboarding-img.png'}
         alt="healthcare"
         width={1000}
         height={1000}

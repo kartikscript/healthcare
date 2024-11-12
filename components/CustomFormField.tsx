@@ -13,6 +13,11 @@ import { FormFieldType } from './form/PatientForm'
 import Image from 'next/image'
 import 'react-phone-number-input/style.css'
 import PhoneInput from 'react-phone-number-input'
+import { Calendar } from 'lucide-react'
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { Select, SelectContent, SelectTrigger, SelectValue } from './ui/select'
+import { Textarea } from './ui/textarea'
 
 
 interface CustomProps{
@@ -32,18 +37,18 @@ interface CustomProps{
 
 const RenderField = ({props,field}:{props:CustomProps,field:any}) =>{
   
-     const {fieldType, iconSrc, iconAlt, placeholder} = props
+     const {fieldType, iconSrc, iconAlt, placeholder,dateFormat,showTimeSelect,renderSkeleton,children} = props
 
     if(fieldType === FormFieldType.INPUT){
       return(
-        <div className='flex border-2 border-gray-900  px-2 text-sm rounded-lg bg-gray-800'>
+        <div className='flex border-2 border-gray-900   text-sm rounded-lg bg-gray-800'>
           {iconSrc && (
             <Image
               src={iconSrc}
               alt={iconAlt || 'icon'}
               width={20}
               height={20}
-              className=''
+              className='ml-2'
             />
           )}
           <FormControl>
@@ -70,6 +75,54 @@ const RenderField = ({props,field}:{props:CustomProps,field:any}) =>{
           </FormControl>
       )
     }
+    else if(fieldType === FormFieldType.DATE_PICKER){
+      return(
+        <div className='flex items-center gap-3 text-sm p-2 text-white bg-gray-800 border-2 border-gray-900 rounded-lg'>
+          <Calendar className='size-5'/>
+          <FormControl>
+           <DatePicker 
+            className='bg-transparent '
+            selected={field.value}
+            onChange={(date) => field.onChange(date)} 
+            dateFormat={dateFormat ?? 'MM/dd/yyyy'}
+            showTimeSelect={showTimeSelect ?? false}
+            timeInputLabel='Time:'
+           />
+          </FormControl>
+        </div>
+      )
+    }
+    else if(fieldType === FormFieldType.SELECT){
+      return(
+        <FormControl>
+          <Select
+           onValueChange={field.onChange} 
+           defaultValue={field.value} 
+          >
+            <SelectTrigger className='px-2 py-5 border-gray-800'>
+              <SelectValue placeholder={placeholder}/>
+            </SelectTrigger>
+           <SelectContent className='bg-gray-900 text-white border-gray-800'>
+            {children}
+           </SelectContent>
+          </Select>
+        </FormControl>
+      )
+    }
+    else if(fieldType === FormFieldType.TEXTAREA){
+      return(
+        <FormControl>
+          <Textarea
+           placeholder={placeholder}
+           {...field}
+           disabled={props.disabled}
+          />
+        </FormControl>
+      )
+    }
+    else if(fieldType === FormFieldType.SKELETON){
+      return renderSkeleton ? renderSkeleton(field) : null
+    }
 }
 
 
@@ -82,7 +135,7 @@ const CustomFormField = (props:CustomProps) => {
     control={control}
     name={name}
     render={({ field }) => (
-      <FormItem>
+      <FormItem className='flex-1'>
         {fieldType !== FormFieldType.CHECKBOX && label && (
           <FormLabel>{label}</FormLabel>
         )}
