@@ -18,6 +18,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { Select, SelectContent, SelectTrigger, SelectValue } from './ui/select'
 import { Textarea } from './ui/textarea'
+import { Checkbox } from './ui/checkbox'
 
 
 interface CustomProps{
@@ -41,7 +42,7 @@ const RenderField = ({props,field}:{props:CustomProps,field:any}) =>{
 
     if(fieldType === FormFieldType.INPUT){
       return(
-        <div className='flex border-2 border-gray-900   text-sm rounded-lg bg-gray-800'>
+        <div className='flex border-2 border-gray-800   text-sm rounded-lg bg-gray-900'>
           {iconSrc && (
             <Image
               src={iconSrc}
@@ -70,14 +71,14 @@ const RenderField = ({props,field}:{props:CustomProps,field:any}) =>{
             value={field.value}
             onChange={field.onChange}
             countryCallingCodeEditable
-            className='border-2 border-gray-900 p-2 text-black  rounded-lg bg-gray-800'
+            className='border-2 border-gray-800 p-2 text-black  rounded-lg bg-gray-900'
             />
           </FormControl>
       )
     }
     else if(fieldType === FormFieldType.DATE_PICKER){
       return(
-        <div className='flex items-center gap-3 text-sm p-2 text-white bg-gray-800 border-2 border-gray-900 rounded-lg'>
+        <div className='flex items-center gap-3 text-sm p-2 text-white bg-gray-900 border-2 border-gray-800 rounded-lg'>
           <Calendar className='size-5'/>
           <FormControl>
            <DatePicker 
@@ -112,11 +113,28 @@ const RenderField = ({props,field}:{props:CustomProps,field:any}) =>{
     else if(fieldType === FormFieldType.TEXTAREA){
       return(
         <FormControl>
-          <Textarea
+          <Textarea 
+           className='h-24 bg-gray-900 border-2 border-gray-800 remove-scrollbar'
            placeholder={placeholder}
            {...field}
            disabled={props.disabled}
           />
+        </FormControl>
+      )
+    }
+    else if(fieldType === FormFieldType.CHECKBOX){
+      return(
+        <FormControl>
+          <div className='flex items-center gap-4'>
+            <Checkbox
+             id={props.name}
+             checked={field.value}
+             onCheckedChange={field.onChange}
+            />
+            <label className='text-sm text-gray-300' htmlFor={props.name} >
+              {props.label}
+            </label>
+          </div>
         </FormControl>
       )
     }

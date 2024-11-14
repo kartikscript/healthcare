@@ -14,10 +14,7 @@ const Register = async({params:{userId}}:SearchParamProps) => {
           <h1 className="text-3xl font-semibold ">Welcome !</h1>
           <p className="text-sm text-white/60 py-2 ">Let us know more about yourself </p>
           <RegisterForm user={user}/>
-          <div className="flex justify-between mt-16 text-sm text-white/50">
-            <p>&copy; 2024 Healthcare</p>
-            <p>Admin</p>
-          </div>
+          <p className='mt-16 text-sm text-white/50'>&copy; 2024 Healthcare</p>
       </div>
       <Image
         className="w-[20%] bg-cover "
