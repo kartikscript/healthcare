@@ -18,3 +18,5 @@ Example:
 If the email in the schema is required and must match an email pattern, this resolver will automatically validate the email field for you.
 if the name requires min of 2 characters and inputs less than it than validate the field and warns.
 ****checks if anything go beyond rules defined in schema
+
+name attribute in form field should match to validation schema object keys

@@ -26,12 +26,13 @@ export default function RootLayout({
       <body
         className={cn('overflow-hidden font-sans antialiased',fontSans.variable)}
       >
-        <ThemeProvider
+        {/* <ThemeProvider
             attribute="class"
             defaultTheme="dark"
-          >
+            enableSystem={true}
+          > */}
             {children}
-          </ThemeProvider>
+          {/* </ThemeProvider> */}
       </body>
     </html>
   );

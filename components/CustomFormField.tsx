@@ -55,6 +55,8 @@ const RenderField = ({props,field}:{props:CustomProps,field:any}) =>{
           <FormControl>
             <Input
             placeholder={placeholder}
+            value={field.value}
+            onChange={field.onChange}
             {...field}
             className='border-0 '
             />

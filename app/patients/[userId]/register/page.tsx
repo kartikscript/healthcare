@@ -5,7 +5,7 @@ import React from 'react'
 import { getUser } from "@/lib/actions/patient.action"
 
 const Register = async({params:{userId}}:SearchParamProps) => {
-
+  
   const user = await getUser(userId)
   return (
     <header className="bg-gray-950 text-white/90 flex h-screen max-h-screen ">

@@ -15,6 +15,8 @@ export default function Home() {
           <p>Admin</p>
         </div>
     </div>
+
+
       <Image
         className="w-1/2 bg-cover "
         src={'/images/onboarding-img.png'}

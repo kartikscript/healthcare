@@ -40,13 +40,16 @@ const PatientForm = () => {
     })
 
     // 2. Define a submit handler.
-    async function onSubmit({email,name,phone}: z.infer<typeof UserFormValidation>) {
+    async function onSubmit(values: z.infer<typeof UserFormValidation>) {
       setIsLoading(true)
-
+      console.log('submittingg',values)
       try {
-        const userData = {name,email,phone}
+        const userData = {
+          name:values.name,
+          email:values.email,
+          phone:values.phone}
         const user = await createUser(userData)
-
+        console.log('userr registerrr')
         if(user) router.push(`/patients/${user.$id}/register`)
       } catch (error) {
         console.log(error)
@@ -59,7 +62,7 @@ const PatientForm = () => {
         <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-2 ">
           <CustomFormField
            control={form.control}
-           name="username"
+           name="name"
            fieldType={FormFieldType.INPUT}
            label='Full Name'
            placeholder='John Doe'
@@ -77,7 +80,7 @@ const PatientForm = () => {
           />
           <CustomFormField
            control={form.control}
-           name="phone-number"
+           name="phone"
            fieldType={FormFieldType.PHONE_INPUT}
            label='phone number'
            placeholder='enter you number'
