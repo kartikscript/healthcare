@@ -24,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={cn('overflow-hidden font-sans antialiased',fontSans.variable)}
+        className={cn(' font-sans antialiased',fontSans.variable)}
       >
         {/* <ThemeProvider
             attribute="class"
