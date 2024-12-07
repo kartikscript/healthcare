@@ -13,17 +13,13 @@ import {
 import { MoreHorizontal } from "lucide-react"
 import { formatDateTime } from "@/lib/utils"
 import AppointmentModal from "../AppointmentModal"
+import { Appointment } from "@/types/appwrite.types"
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
-export type Payment = {
-  id: string
-  amount: number
-  status: "pending" | "processing" | "success" | "failed"
-  email: string
-}
 
-export const columns: ColumnDef<Payment>[] = [
+
+export const columns: ColumnDef<Appointment>[] = [
   {
     header:'ID',
     cell:({row})=> <p>{row.index+1}</p>
@@ -58,17 +54,14 @@ export const columns: ColumnDef<Payment>[] = [
              type='schedule'
              patientId={data.patient.$id}
              userId={data.userId}
-             appointmentId={data}
-             title='Schedule Appointment'
-             description='Please confirm the following details to schedule'
+             appointment={data}
+             
             />
             <AppointmentModal 
              type='cancel'
              patientId={data.patient.$id}
              userId={data.userId}
-             appointmentId={data}
-             title='Cancel Appointment'
-             description='Please confirm the following details to cancel'
+             appointment={data}
             />
         </div>
       )

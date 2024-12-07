@@ -9,9 +9,17 @@ import {
 } from "@/components/ui/dialog"
 import { useState } from "react"
 import { Button } from "./ui/button"
+import AppointmentForm from "./form/AppointmentForm"
+import { Appointment } from "@/types/appwrite.types"
 
 
-const AppointmentModal = ({type}:{type:'schedule'|'cancel'}) => {
+const AppointmentModal = ({type,patientId,userId,appointment}:{
+  type:'schedule'|'cancel',
+  patientId:string,
+  userId:string,
+  appointment?:Appointment
+
+}) => {
 
   const [open, setOpen] = useState(false)
   return (
@@ -21,12 +29,18 @@ const AppointmentModal = ({type}:{type:'schedule'|'cancel'}) => {
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Are you absolutely sure?</DialogTitle>
+          <DialogTitle>{type} Appointment</DialogTitle>
           <DialogDescription>
-            This action cannot be undone. This will permanently delete your account
-            and remove your data from our servers.
+            Please fill in the following details to {type} an appointment
           </DialogDescription>
         </DialogHeader>
+        <AppointmentForm
+         userId={userId}
+         patientId={patientId}
+         type={type}
+         appointment={appointment}
+         setOpen={setOpen}
+        />
       </DialogContent>
     </Dialog>
     
