@@ -26,7 +26,7 @@ const Success = async ({params:{userId},searchParams}:SearchParamProps) => {
         <p>Requested appointment details :</p>
         <div className='flex gap-2'>
           <Image
-          src={doctor?.image!}
+          src={doctor?.image ||''}
           alt={'doctor'}
           width={100}
           height={100}
