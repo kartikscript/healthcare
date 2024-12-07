@@ -37,17 +37,16 @@ const AppointmentForm = ({
       resolver: zodResolver(AppointmentFormValidation),
       defaultValues: {
         primaryPhysician:appointment ? appointment.primaryPhysician:'',
-        schedule:appointment ? new Date(appointment.schedule):new Date(),
+        schedule:appointment ? new Date(appointment.schedule):new Date(Date.now()),
         reason:appointment ? appointment.reason:'',
         note:appointment ? appointment.note:'',
-        cancellationReason:appointment ? appointment.cancellationReason:''
+        cancellationReason:appointment?.cancellationReason || ''
       },
     })
 
     // 2. Define a submit handler.
     async function onSubmit(values: z.infer<typeof AppointmentFormValidation>) {
       setIsLoading(true)
-      console.log('typeepee',type)
       let status
       if(type === 'schedule')status='scheduled'
       else if(type === 'cancel')status='cancelled'
@@ -83,7 +82,6 @@ const AppointmentForm = ({
             },
             type
           }
-          console.log(appointmentToUpdate, type)
           const updatedAppointment = await updateAppointment(appointmentToUpdate)
           if(updatedAppointment){
             setOpen && setOpen(false);

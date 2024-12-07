@@ -85,7 +85,7 @@ const RegisterForm = ({user}:{user:User}) => {
 
     return (
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-6 ">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-6">
           <h1 className="font-semibold text-2xl my-6">Personal Information</h1>
           <CustomFormField
            control={form.control}
@@ -96,7 +96,7 @@ const RegisterForm = ({user}:{user:User}) => {
            iconSrc='/icons/user.svg'
            iconAlt="user"
           />
-          <div className="flex gap-6">
+          <div className="flex flex-col gap-6 xl:flex-row">
             <CustomFormField
             control={form.control}
             name="email"
@@ -114,7 +114,7 @@ const RegisterForm = ({user}:{user:User}) => {
             placeholder='enter you number'
             />
           </div>
-          <div className="flex gap-6">
+          <div className="flex flex-col gap-6 xl:flex-row">
             <CustomFormField
               control={form.control}
               name="birthDate"
@@ -150,7 +150,7 @@ const RegisterForm = ({user}:{user:User}) => {
                  )}
             />
           </div>
-          <div className="flex gap-6">
+          <div className="flex flex-col gap-6 xl:flex-row">
             <CustomFormField
               control={form.control}
               name="address"
@@ -166,7 +166,7 @@ const RegisterForm = ({user}:{user:User}) => {
               placeholder='Software Engineer'
             />
           </div>
-          <div className="flex gap-6">
+          <div className="flex flex-col gap-6 xl:flex-row">
             <CustomFormField
               control={form.control}
               name="emergencyContactName"
