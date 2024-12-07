@@ -13,7 +13,7 @@ const Success = async ({params:{userId},searchParams}:SearchParamProps) => {
 
   const appointmentId = (searchParams?.appointmentId as string) || ''
   const appointment = await getAppointment(appointmentId)
-  const doctor = Doctors.find((doc)=> doc.name === appointment.primaryPhysician)
+  const doctor = Doctors.find((doc)=> doc.name === appointment?.primaryPhysician)
   return (
     <div className='h-screen gap-4 flex flex-col justify-center items-center bg-gray-800 text-gray-100'>
       <h2 className="flex items-center gap-4 text-xl font-semibold pb-8"><Hospital/> HealthCare</h2>

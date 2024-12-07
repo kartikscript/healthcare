@@ -11,7 +11,7 @@ import {
   databases,
   messaging,
 } from "../appwrite.config";
-import { formatDateTime, parseStringify } from "../utils";
+import {  parseStringify } from "../utils";
 
 //  CREATE APPOINTMENT
 export const createAppointment = async (
@@ -119,10 +119,8 @@ export const sendSMSNotification = async (userId: string, content: string) => {
 //  UPDATE APPOINTMENT
 export const updateAppointment = async ({
   appointmentId,
-  userId,
   // timeZone,
   appointment,
-  type,
 }: UpdateAppointmentParams) => {
   try {
     // Update appointment to scheduled -> https://appwrite.io/docs/references/cloud/server-nodejs/databases#updateDocument

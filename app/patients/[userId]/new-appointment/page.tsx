@@ -1,5 +1,4 @@
 import AppointmentForm from "@/components/form/AppointmentForm";
-import PatientForm from "@/components/form/PatientForm";
 import { getPatient } from "@/lib/actions/patient.action";
 import { Hospital } from "lucide-react";
 import Image from "next/image";
