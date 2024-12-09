@@ -19,17 +19,17 @@ const page =async () => {
         <div className='pt-8 w-full flex sm:flex-row flex-col gap-8 justify-between'>
           <StatCard
           type='schedule'
-          count={appointments.scheduledCount}
+          count={appointments?.scheduledCount}
           label='Schedule appointments'
           />
           <StatCard
           type='pending'
-          count={appointments.pendingCount}
+          count={appointments?.pendingCount}
           label='Pending appointments'
           />
           <StatCard
           type='cancel'
-          count={appointments.cancelledCount}
+          count={appointments?.cancelledCount}
           label='Cancelled appointments'
           />
         </div>
