@@ -8,7 +8,7 @@ interface ButtonProps{
 }
 const SubmitButton = ({isLoading, className, children}:ButtonProps) => {
   return (
-    <Button type='submit' disabled={isLoading} className={className ?? 'w-full my-4 bg-emerald-600 text-white'}>
+    <Button type='submit' disabled={isLoading} className={className ?? 'w-full rounded-full my-4 bg-emerald-600 text-white'}>
       {isLoading ?(
         <div>
             Loading...
